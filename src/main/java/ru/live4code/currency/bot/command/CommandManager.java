@@ -1,27 +1,24 @@
 package ru.live4code.currency.bot.command;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import ru.live4code.currency.bot.command.impl.StartCommand;
-import ru.live4code.currency.bot.config.PropertiesConfig;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
 public class CommandManager {
 
-    @Autowired
-    private PropertiesConfig propertiesConfig;
+    @Resource
+    private List<AbstractCommand> commands;
 
     @Bean
-    public Map<String, AbstractCommand> initializeCommands() {
-        Map<String, AbstractCommand> commandHashMap = new HashMap<>();
-
-        commandHashMap.put("/start", new StartCommand(propertiesConfig.getBotKey()));
-
-        return commandHashMap;
+    public Map<CommandType, AbstractCommand> initializeCommands() {
+        var commandList = new HashMap<CommandType, AbstractCommand>();
+        commands.forEach(item -> commandList.put(item.getCommand(), item));
+        return commandList;
     }
 
 }

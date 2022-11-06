@@ -4,15 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Slf4j
 public abstract class AbstractCommand extends DefaultAbsSender {
 
-    private final String BOT_KEY;
-
-    protected AbstractCommand(String key) {
+    protected AbstractCommand() {
         super(new DefaultBotOptions());
-        BOT_KEY = key;
     }
 
     public void tryToPerformCommand(Message message) {
@@ -23,11 +21,8 @@ public abstract class AbstractCommand extends DefaultAbsSender {
         }
     }
 
-    protected abstract void performCommand(Message message);
+    protected abstract void performCommand(Message message) throws TelegramApiException;
 
-    @Override
-    public String getBotToken() {
-        return BOT_KEY;
-    }
+    public abstract CommandType getCommand();
 
 }
