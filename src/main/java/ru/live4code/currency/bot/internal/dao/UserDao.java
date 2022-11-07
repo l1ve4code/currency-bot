@@ -1,10 +1,10 @@
-package ru.live4code.currency.bot.dao;
+package ru.live4code.currency.bot.internal.dao;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.live4code.currency.bot.model.UserModel;
-import ru.live4code.currency.bot.repository.UserRepository;
+import ru.live4code.currency.bot.internal.model.UserModel;
+import ru.live4code.currency.bot.internal.repository.UserRepository;
 
 @Slf4j
 @Component

@@ -13,4 +13,6 @@ public class PropertiesConfig {
     private String botName;
     @Value("${bot.key}")
     private String botKey;
+    @Value("${currency.api.token}")
+    private String token;
 }

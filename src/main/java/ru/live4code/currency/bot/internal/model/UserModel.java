@@ -1,4 +1,4 @@
-package ru.live4code.currency.bot.model;
+package ru.live4code.currency.bot.internal.model;
 
 import lombok.Data;
 import javax.persistence.*;

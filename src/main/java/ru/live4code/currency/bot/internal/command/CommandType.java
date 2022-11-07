@@ -1,7 +1,8 @@
-package ru.live4code.currency.bot.command;
+package ru.live4code.currency.bot.internal.command;
 
 public enum CommandType {
-    START("/start");
+    START("/start"),
+    MENU("/menu");
 
     private String value;
     CommandType(String value) {
